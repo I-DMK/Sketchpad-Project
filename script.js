@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("container");
     const resetButton = document.getElementById("reset-button");
+    const clearButton = document.getElementById("clear-button");
     let gridSize = 16;
 
     function createGrid(size) {
@@ -47,8 +48,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    resetButton.addEventListener("click", resetGrid);
+    function clearGrid() {
+        document.querySelectorAll(".grid-square").forEach(square => {
+            square.style.backgroundColor = "white";
+            square.style.opacity = "0.1";
+        });
+    }
 
+    resetButton.addEventListener("click", resetGrid);
+    clearButton.addEventListener("click", clearGrid); 
+    
     createGrid(gridSize);
 
     console.log("Grid created successfully!");

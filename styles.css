@@ -33,17 +33,28 @@ main {
 }
 
 button {
-    margin-bottom: 10px;
+    margin: 5px;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
     border: none;
-    background-color: #007BFF;
     color: white;
     border-radius: 5px;
     transition: background-color 0.3s;
 }
 
-button:hover {
+#reset-button {
+    background-color: #007BFF;
+}
+
+#reset-button:hover {
     background-color: #0056b3;
+}
+
+#clear-button {
+    background-color: #DC3545;
+}
+
+#clear-button:hover {
+    background-color: #A71D2A;
 }
