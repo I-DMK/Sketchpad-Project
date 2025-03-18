@@ -15,11 +15,17 @@ document.addEventListener("DOMContentLoaded", () => {
             square.classList.add("grid-square");
             square.style.width = `${squareSize}px`;
             square.style.height = `${squareSize}px`;
+
+            // Add hover effect: change color on mouseenter
+            square.addEventListener("mouseenter", () => {
+                square.style.backgroundColor = "black"; // Default to black
+            });
+
             container.appendChild(square);
         }
     }
 
     createGrid(gridSize); // Initialize grid
 
-    console.log("Grid created successfully!");
+    console.log("Grid created successfully with hover effect!");
 });
