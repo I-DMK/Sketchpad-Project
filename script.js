@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
             container.removeChild(container.firstChild);
         }
 
-        const squareSize = 400 / size;
+        const squareSize = container.clientWidth / size;
 
         for (let i = 0; i < size * size; i++) {
             const square = document.createElement("div");
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 let currentOpacity = parseFloat(square.style.opacity);
                 if (currentOpacity < 1) {
-                    square.style.opacity = (currentOpacity + 0.1).toFixed(1);
+                    square.style.opacity = Math.min(1, (currentOpacity + 0.1));
                 }
 
                 square.style.backgroundColor = randomColor;

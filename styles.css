@@ -7,11 +7,17 @@ body {
     font-family: Arial, sans-serif;
 }
 
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #container {
     display: flex;
     flex-wrap: wrap;
-    width: 400px;
-    height: 400px;
+    width: min(90vw, 400px);
+    height: min(90vw, 400px);
     border: 2px solid black;
 }
 
