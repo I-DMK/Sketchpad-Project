@@ -1,32 +1,40 @@
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("container");
     const resetButton = document.getElementById("reset-button");
-    let gridSize = 16; // Default grid size
+    let gridSize = 16;
 
     function createGrid(size) {
-        // Remove previous elements securely
+
         while (container.firstChild) {
             container.removeChild(container.firstChild);
         }
 
-        const squareSize = 400 / size; // Adjust square size dynamically
+        const squareSize = 400 / size;
 
         for (let i = 0; i < size * size; i++) {
             const square = document.createElement("div");
             square.classList.add("grid-square");
             square.style.width = `${squareSize}px`;
             square.style.height = `${squareSize}px`;
+            square.style.opacity = "0.1";
 
-            // Add hover effect: change color on mouseenter
             square.addEventListener("mouseenter", () => {
-                square.style.backgroundColor = "black"; // Default to black
+                let randomColor = `rgb(${random255()}, ${random255()}, ${random255()})`;
+
+                let currentOpacity = parseFloat(square.style.opacity);
+                if (currentOpacity < 1) {
+                    square.style.opacity = (currentOpacity + 0.1).toFixed(1);
+                }
+
+                square.style.backgroundColor = randomColor;
             });
 
             container.appendChild(square);
         }
     }
-
-    // Function to ask user for new grid size and regenerate grid
+    function random255() {
+        return Math.floor(Math.random() * 256);
+    }
     function resetGrid() {
         let newSize = prompt("Enter the number of squares per side (max 100):", gridSize);
         newSize = parseInt(newSize);
@@ -41,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     resetButton.addEventListener("click", resetGrid);
 
-    createGrid(gridSize); // Initialize grid on page load
+    createGrid(gridSize);
 
-    console.log("Grid created successfully with dynamic resizing!");
+    console.log("Grid created successfully!");
 });
